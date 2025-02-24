@@ -16,7 +16,7 @@ app.secret_key = 'your_secret_key'  # Change this in production
 # MySQL Configuration
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'Bhadra@24'
+app.config['MYSQL_PASSWORD'] = '*******'
 app.config['MYSQL_DB'] = 'anonymous_reporting_system'
 
 mysql = MySQL(app)
@@ -24,7 +24,7 @@ def get_db_connection():
     return MySQLdb.connect(
         host="localhost",       # Change this if your database is hosted elsewhere
         user="root",       # Replace with your MySQL username
-        password="Bhadra@24",  # Replace with your MySQL password
+        password="*******",  # Replace with your MySQL password
         database="anonymous_reporting_system",  # Ensure this matches your database name
         cursorclass=MySQLdb.cursors.DictCursor
     )
@@ -57,7 +57,7 @@ def home():
 
 # ------------- USER REPORTING SYSTEM ---------------- #
 
-FAKE_REPORT_KEYWORDS = ['churidar', 'impossible', 'too perfect', 'unbelievable', 'unrealistic', 'unusual', 'strange']
+FAKE_REPORT_KEYWORDS = ['churidhar', 'impossible', 'too perfect', 'unbelievable', 'unrealistic', 'unusual', 'strange']
 
 def contains_fake_keywords(description):
     """Check if the description contains any keywords associated with fake reports."""
