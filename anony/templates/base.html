@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Anonymous Reporting</title>
+</head>
+<body>
+    <nav>
+        <!--<a href="{{ url_for('submit_report') }}">Submit Report</a>-->
+        <!--<a href="{{ url_for('check_status') }}">Check Status</a>-->
+{% if session['user_type'] != 'admin' %}
+    <a href="{{ url_for('submit_report') }}" class="btn btn-success">Submit Report</a>
+    <a href="{{ url_for('check_status') }}" class="btn btn-info">Check Status</a>
+{% endif %}
+    </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul>
+        {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+</body>
+</html>

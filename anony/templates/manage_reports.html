@@ -1,0 +1,61 @@
+{% block content %}
+<h2>Manage Reports</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Report ID</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for report in reports %}
+        <tr data-id="{{ report[0] }}">
+            <td>{{ report[0] }}</td>
+            <td>{{ report[1] }}</td>
+            <td>{{ report[2] }}</td>
+            <td>{{ report[3] }}</td>
+            <td>{{ report[4] }}</td>
+            <td>
+                <a href="{{ url_for('update_status', report_id=report[0]) }}" class="btn btn-info">Update Status</a>
+               <!-- <a href="{{ url_for('request_witness', report_id=report[0]) }}" class="btn btn-warning">Request Witness</a>-->
+                <a href="{{ url_for('delete_report', report_id=report[0]) }}" class="btn btn-danger">Delete</a>
+                <!--<form action="{{ url_for('request_witness', report_id=report[0]) }}" method="post">
+                    <button type="submit" class="btn btn-warning">Request Witness</button>
+                </form>-->
+                <form action="{{ url_for('request_witness', report_id=report[0]) }}" method="post">
+                    <button type="submit" 
+                            class="btn {% if report[6] == 'Requested' %}btn-secondary{% else %}btn-warning{% endif %}">
+                        {% if report[6] == 'Requested' %}
+                            Witness Requested
+                        {% else %}
+                            Request Witness
+                        {% endif %}
+                    </button>
+                </form>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let fakeReports = JSON.parse(localStorage.getItem("fakeReports")) || [];
+        let rows = document.querySelectorAll("tbody tr"); // Target only tbody rows
+
+        rows.forEach(row => {
+            let reportId = row.getAttribute("data-id"); // Get the report ID from data attribute
+            if (fakeReports.includes(reportId)) {
+                row.style.backgroundColor = "red"; // Change row color
+                row.style.color = "white"; // Ensure text is readable
+            }
+        });
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<h2>Report Details</h2>
+<p><strong>ID:</strong> {{ report[0] }}</p>
+<p><strong>Description:</strong> {{ report[1] }}</p>
+<p><strong>Date:</strong> {{ report[2] }}</p>
+<p><strong>Location:</strong> {{ report[3] }}</p>
+<p><strong>Status:</strong> {{ report[4] }}</p>
+
+<h3>Attached Files</h3>
+<ul>
+    {% if media %}
+        {% for file in media %}
+        <li><a href="{{ url_for('static', filename='uploads/' + file) }}" target="_blank">{{ file }}</a></li>
+        {% endfor %}
+    {% else %}
+        <li>No files attached.</li>
+    {% endif %}
+</ul>
+
+<a href="{{ url_for('admin_reports') }}" class="btn btn-primary">Back to Reports</a>
+{% endblock %}

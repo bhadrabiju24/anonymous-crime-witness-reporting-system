@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Report Details</h2>
+
+<table class="table">
+    <tr>
+        <th>Report ID</th>
+        <td>{{ report[0] }}</td>
+    </tr>
+    <tr>
+        <th>Description</th>
+        <td>{{ report[1] }}</td>
+    </tr>
+    <tr>
+        <th>Date</th>
+        <td>{{ report[2] }}</td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>{{ report[3] }}</td>
+    </tr>
+    <tr>
+        <th>Status</th>
+        <td>{{ report[4] }}</td>
+    </tr>
+</table>
+
+<h3>Evidence Files</h3>
+{% if media_files %}
+    <ul>
+        {% for file in media_files %}
+            <li>
+                <a href="{{ url_for('serve_file', filename=file[0]) }}" target="_blank">{{ file[0] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No evidence files attached.</p>
+{% endif %}
+
+<a href="{{ url_for('admin_reports') }}" class="btn btn-primary">Back to Reports</a>
+
+{% endblock %}

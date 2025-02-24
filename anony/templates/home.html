@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0d1b2a, #1b263b);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background: rgba(63, 3, 59, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .title h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation Links */
+        .nav-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nav-items a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 400;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-items a:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Welcome to Anonymous Crime Reporting System</h1>
+        </div>
+        <div class="nav-items">
+            <a href="{{ url_for('submit_report') }}">Submit a Report</a>
+            <a href="{{ url_for('check_status') }}">Check Report Status</a>
+            <a href="{{ url_for('admin_dashboard') }}">Admin Panel</a>
+        </div>
+    </div>
+</body>
+</html>

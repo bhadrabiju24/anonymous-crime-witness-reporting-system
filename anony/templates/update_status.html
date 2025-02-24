@@ -1,0 +1,14 @@
+<!-- templates/update_status.html -->
+
+{% block content %}
+<h2>Update Report Status</h2>
+<form method="POST">
+    <label for="status">New Status:</label>
+    <select name="status">
+        <option value="Pending">Pending</option>
+        <option value="Under Investigation">Under Investigation</option>
+        <option value="Resolved">Resolved</option>
+    </select>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>
+{% endblock %}
